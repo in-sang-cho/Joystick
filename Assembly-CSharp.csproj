@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B8B5AD54-DA7A-DE9F-7EA8-D8317AC644D0}</ProjectGuid>
+    <ProjectGuid>{2183812B-C5A5-E97B-0F71-5433B9B755EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,10 +63,13 @@
     <Compile Include="Assets\Assets\Scripts\PController.cs" />
     <Compile Include="Assets\Assets\Scripts\JoystickController.cs" />
     <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
+    <Compile Include="Assets\View\ViewEditor.cs" />
+    <Compile Include="Assets\View\FieldOfView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sample- Low Poly Nature Assets\Documentation.txt" />
     <None Include="Assets\Sample- Low Poly Nature Assets\Materials\_MaterialIndex.txt" />
+    <None Include="Assets\Low Poly Nature Assets\Documentation.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
