@@ -17,29 +17,20 @@ public class ViewEditor : Editor
 
         Handles.DrawWireArc(Target.transform.position, Vector3.up, Vector3.forward, 360.0f, Target.Radius);
 
+        // ** 정면 방향
+        Handles.DrawLine(Target.transform.position, Target.transform.forward * Target.Radius);
 
-        // ** LeftLine, RightLine, EndLine이 월드좌표를 기준으로 그리는 것을 로컬로 변경
-        // ** 회전이 안됨
-        // ** ViewField 내부에서만 target을 find 할 수 있도록
-
-
-        float lAngle = (-Target.ViewAngle / 2);
-
-        Vector3 LeftLine = new Vector3(
-            Mathf.Sin(lAngle * Mathf.Deg2Rad),
-            0.0f,
-            Mathf.Cos(lAngle * Mathf.Deg2Rad) ) * Target.Radius;
+        // ** 왼쪽 Endline
+        Vector3 LeftLine = Target.GetEulerAngle(-(Target.ViewAngle - Target.Angle) + 0.5f);
 
         Handles.DrawLine(Target.transform.position, LeftLine);
 
-        float rAngle = (Target.ViewAngle / 2);
-
-        Vector3 RightLine = new Vector3(
-            Mathf.Sin(rAngle * Mathf.Deg2Rad),
-            0.0f,
-            Mathf.Cos(rAngle * Mathf.Deg2Rad) ) * Target.Radius;
+        // ** 오른쪽 Endline
+        Vector3 RightLine = Target.GetEulerAngle((Target.ViewAngle - Target.Angle) + 0.5f);
 
         Handles.DrawLine(Target.transform.position, RightLine);
+
+        Handles.color = Color.green;
 
         foreach (Transform element in Target.TargetList)
         {
