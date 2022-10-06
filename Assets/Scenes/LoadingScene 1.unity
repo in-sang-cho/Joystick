@@ -21713,6 +21713,8 @@ MonoBehaviour:
   Radius: 0
   ViewAngle: 0
   Angle: 0
+  OffsetAngle: 0
+  LineList: []
   TargetList: []
   TargetMask:
     serializedVersion: 2
@@ -71455,7 +71457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024992501267447158, guid: 41698c65ee7234c4dbad1b7475f05a45, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.09
       objectReference: {fileID: 0}
     - target: {fileID: 4024992501267447158, guid: 41698c65ee7234c4dbad1b7475f05a45, type: 3}
       propertyPath: m_LocalPosition.y
@@ -71463,7 +71465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024992501267447158, guid: 41698c65ee7234c4dbad1b7475f05a45, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.91
+      value: -13.63
       objectReference: {fileID: 0}
     - target: {fileID: 4024992501267447158, guid: 41698c65ee7234c4dbad1b7475f05a45, type: 3}
       propertyPath: m_LocalRotation.w

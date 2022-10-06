@@ -13,24 +13,26 @@ public class ViewEditor : Editor
         FieldOfView Target = (FieldOfView)target;
 
         // ** GUI를 흰색으로 설정
+        Handles.color = Color.green;
+
+        foreach (Vector3 element in Target.LineList)
+            Handles.DrawLine(Target.transform.position, element);
+
         Handles.color = Color.red;
 
         Handles.DrawWireArc(Target.transform.position, Vector3.up, Vector3.forward, 360.0f, Target.Radius);
 
-        // ** 정면 방향
-        Handles.DrawLine(Target.transform.position, Target.transform.forward * Target.Radius);
-
         // ** 왼쪽 Endline
-        Vector3 LeftLine = Target.GetEulerAngle(-(Target.ViewAngle - Target.Angle) + 0.5f);
+        Vector3 LeftLine = Target.GetEulerAngle(-(Target.ViewAngle - Target.OffsetAngle) * 0.5f);
 
         Handles.DrawLine(Target.transform.position, LeftLine);
 
         // ** 오른쪽 Endline
-        Vector3 RightLine = Target.GetEulerAngle((Target.ViewAngle - Target.Angle) + 0.5f);
+        Vector3 RightLine = Target.GetEulerAngle((Target.ViewAngle - Target.OffsetAngle) * 0.5f);
 
         Handles.DrawLine(Target.transform.position, RightLine);
 
-        Handles.color = Color.green;
+        Handles.color = Color.red;
 
         foreach (Transform element in Target.TargetList)
         {
