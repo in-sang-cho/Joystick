@@ -15,8 +15,10 @@ public class ViewEditor : Editor
         // ** GUI를 흰색으로 설정
         Handles.color = Color.green;
 
-        foreach (Vector3 element in Target.LineList)
-            Handles.DrawLine(Target.transform.position, element);
+        for (int i = 0; i < Target.LineList.Count; ++i)
+        {
+            Handles.DrawLine(Target.transform.position, Target.LineList[i].Point);
+        }
 
         Handles.color = Color.red;
 

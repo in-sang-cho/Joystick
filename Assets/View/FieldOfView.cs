@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    public struct CastInfo
+    {
+        // ** 맞았는지 확인
+        public bool Hit;
+
+        // ** 맞았다면 맞은 위치, 맞지 않았다면 Radius의 거리
+        public Vector3 Point;
+
+        // ** 도달 거리
+        public float Distance;
+
+        // ** 각도
+        public float Angle;
+    }
+
+
     [Header("Circle")]
     [Range(0, 30)]
     public float Radius = 0;
@@ -15,12 +31,20 @@ public class FieldOfView : MonoBehaviour
     public float Angle;
     public float OffsetAngle = 0;
 
-    [HideInInspector] public List<Vector3> LineList = new List<Vector3>();
+    [HideInInspector] public List<CastInfo> LineList = new List<CastInfo>();
 
     [HideInInspector] public List<Transform> TargetList = new List<Transform>();
 
     [SerializeField] private LayerMask TargetMask;
     [SerializeField] private LayerMask ObstacleMask;
+
+    //== 플레이어 컨트롤러
+
+
+    public MeshFilter _MeshFilter;
+    public Mesh _Mesh;
+
+
 
     private void Start()
     {
@@ -36,26 +60,7 @@ public class FieldOfView : MonoBehaviour
     private void Update()
     {
         LineList.Clear();
-
-        int Count = Mathf.RoundToInt(ViewAngle / Angle) + 1;
-
-        float fAngle = -(ViewAngle * 0.5f) + 1;
-
-        for (int i = 0; i < Count; ++i)
-        {
-            Vector3 v = new Vector3(
-                Mathf.Sin((fAngle + (Angle * i)) * Mathf.Deg2Rad),
-                0.0f,
-                Mathf.Cos((fAngle + (Angle * i)) * Mathf.Deg2Rad));
-
-            RaycastHit hit;
-
-            if(Physics.Raycast(transform.position, v, out hit, Radius, ObstacleMask))
-                LineList.Add(hit.point);
-            else
-                LineList.Add(v * Radius);
-
-        }
+       
 
         if (Input.GetKey(KeyCode.LeftArrow))
             OffsetAngle -= 5;
@@ -77,13 +82,15 @@ public class FieldOfView : MonoBehaviour
             0.0f,
             Mathf.Cos(_Angle * Mathf.Deg2Rad)) * Radius + transform.position;
     }
-    
+
     IEnumerator CheckTarget()
     {
         TargetList.Clear();
 
+        /*
+            */
 
-        while(true)
+        while (true)
         {
 
             Collider[] ColList = Physics.OverlapSphere(transform.position, Radius, TargetMask);
@@ -106,5 +113,89 @@ public class FieldOfView : MonoBehaviour
 
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    public Vector3 GetAngle(float _Angle)
+    {
+        return new Vector3(Mathf.Sin(_Angle * Mathf.Deg2Rad), 0.0f, Mathf.Cos(_Angle * Mathf.Deg2Rad));
+    }
+
+    public CastInfo GetCastInfo(float _Angle)
+    {
+        Vector3 Direction = GetAngle(_Angle);
+
+        CastInfo Info;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Direction, out hit, Radius, ObstacleMask))
+        {
+            // ** 맞았다면
+            Info.Hit = true;
+
+            // ** 각도
+            Info.Angle = _Angle;
+
+            // ** 거리
+            Info.Distance = hit.distance;
+
+            // ** 맞은 위치
+            Info.Point = hit.point;
+        }
+        else
+        {
+            // ** 안맞았다면
+            Info.Hit = false;
+
+            // ** 각도
+            Info.Angle = _Angle;
+
+            // ** 최대 도달 거리인 Radius
+            Info.Distance = Radius;
+
+            // ** 발사 방향의 최대 거리인 Radius의 위치
+            Info.Point = transform.position + Direction * Radius;
+        }
+
+        return new CastInfo();
+    }
+
+
+
+
+    void GetVertex()
+    {
+        int Count = Mathf.RoundToInt(ViewAngle / Angle);
+        float fAngle = -(ViewAngle - OffsetAngle) * 0.5f;
+
+        for (int i = 0; i > Count; ++i)
+        {
+            CastInfo Info = GetCastInfo(fAngle + (Angle * i));
+            LineList.Add(Info);
+        }
+
+        int VertexCount = LineList.Count + 1;
+
+        Vector3[] Vertices = new Vector3[VertexCount];
+        int[] Triangles = new int[(VertexCount - 2) * 3];
+
+        Vertices[0] = Vector3.zero;
+
+        for (int i = 1; i < Vertices.Length; ++i)
+            Vertices[i] = LineList[i - 1].Point;
+
+        /*
+        for (int i = 0; i < vertices.Length; ++i)
+        {
+             vertices[i * 3] = 0;
+             vertices[i * 3 + 1] = i + 1;
+             vertices[i * 3 + 2] = i + 2;
+        }
+         */
+        _Mesh.Clear();
+
+        _Mesh.vertices = Vertices;
+        _Mesh.triangles = Triangles;
+
     }
 }
