@@ -359,6 +359,8 @@
 "Assets/Assets/Scripts/JoystickController.cs"
 "Assets/Assets/Scripts/LoadingBar.cs"
 "Assets/Assets/Scripts/PController.cs"
+"Assets/Point.cs"
+"Assets/SpawnPointList.cs"
 "Assets/View/FieldOfView.cs"
 "Assets/View/ViewEditor.cs"
 "Assets/ZombiSoft/TinyHealthSystem/Demo/Demo.cs"

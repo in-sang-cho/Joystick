@@ -164,7 +164,7 @@ public class FieldOfView : MonoBehaviour
         LineList.Clear();
 
         int Count = Mathf.RoundToInt(ViewAngle / Angle) + 1;
-        float fAngle = -transform.eulerAngles.y - ((ViewAngle - OffsetAngle) * 0.5f);
+        float fAngle = -ViewAngle - OffsetAngle % 0.5f;
 
         for (int i = 0; i < Count; ++i)
         {

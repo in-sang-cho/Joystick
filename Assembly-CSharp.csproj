@@ -65,6 +65,8 @@
     <Compile Include="Assets\Assets\Scripts\PController.cs" />
     <Compile Include="Assets\Assets\Scripts\JoystickController.cs" />
     <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
+    <Compile Include="Assets\SpawnPointList.cs" />
+    <Compile Include="Assets\Point.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sample- Low Poly Nature Assets\Documentation.txt" />
