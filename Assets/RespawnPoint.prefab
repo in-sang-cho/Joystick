@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3497558473743897904}
   - component: {fileID: 551883373220760353}
   - component: {fileID: 258905582869119041}
+  - component: {fileID: 1030617112943796035}
   m_Layer: 0
   m_Name: RespawnPoint
   m_TagString: Untagged
@@ -47,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Node: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 592
 --- !u!65 &551883373220760353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76,3 +80,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 10
   m_CollisionDetection: 0
+--- !u!114 &1030617112943796035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2514127270292654741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b8bde870b7dbb489d10c289b750e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Node: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 704

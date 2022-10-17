@@ -7,6 +7,7 @@ TagManager:
   - ManaSprite
   - HealthSprite
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX

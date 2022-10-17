@@ -56,17 +56,17 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Point.cs" />
     <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\Demo.cs" />
     <Compile Include="Assets\ZombiSoft\TinyHealthSystem\HealthSystem.cs" />
     <Compile Include="Assets\Assets\Scripts\LoadingBar.cs" />
     <Compile Include="Assets\Assets\Scripts\FollowCamera.cs" />
+    <Compile Include="Assets\SpawnPointList.cs" />
     <Compile Include="Assets\View\FieldOfView.cs" />
     <Compile Include="Assets\View\ViewEditor.cs" />
     <Compile Include="Assets\Assets\Scripts\PController.cs" />
     <Compile Include="Assets\Assets\Scripts\JoystickController.cs" />
     <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
-    <Compile Include="Assets\SpawnPointList.cs" />
-    <Compile Include="Assets\Point.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sample- Low Poly Nature Assets\Documentation.txt" />
