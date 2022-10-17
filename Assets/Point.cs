@@ -50,6 +50,7 @@ public class Point : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.layer.Equals(mask));
 
         if(collision.gameObject.layer != mask)
         {
@@ -69,21 +70,20 @@ public class Point : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(3.0f);
+
             if (transform.childCount >= 1)
                 continue;
 
-            RendererList.Clear();
-
             GameObject Obj = Instantiate(Target);
-
 
             Obj.transform.position = transform.position;
 
             Obj.transform.parent = transform;
 
-            FindRenderer(Obj);
+            RendererList.Clear();
 
-            yield return new WaitForSeconds(3.0f);
+            FindRenderer(Obj);
 
             foreach (MeshRenderer meshRenderer in RendererList)
             {
