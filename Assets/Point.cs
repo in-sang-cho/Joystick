@@ -48,11 +48,13 @@ public class Point : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
+    // point는 위치를 확인하는 것이지 무엇을 행동으로 하면 안된다
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.layer.Equals(mask));
+        int layer = (2 << collision.gameObject.layer);
 
-        if(collision.gameObject.layer != mask)
+        if((layer & mask) == layer)
         {
             StartCoroutine(Create());
             return;
@@ -98,22 +100,6 @@ public class Point : MonoBehaviour
                     StartCoroutine(SetColor(meshRenderer, color));
                 }
             }
-
-            /*
-            MeshRenderer meshRenderer = Obj.GetComponent<MeshRenderer>();
-
-            meshRenderer.material.shader = Shader.Find("Transparent/VertexLit");
-
-            if (meshRenderer.material.HasProperty("_Color"))
-            {
-                Color color = meshRenderer.material.GetColor("_Color");
-
-                meshRenderer.material.SetColor("_Color", new Color(color.r, color.g, color.b, 0.0f));
-
-                StartCoroutine(SetColor(meshRenderer, color));
-            }
-             */
-
         }
     }
 

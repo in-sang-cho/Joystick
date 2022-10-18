@@ -12,13 +12,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Target
+  - SpawnPointList
   - Water
   - UI
   - Player
-  - Enemy
   - Wall
   - Ground
+  - Enemy
   - 
   - 
   - 
