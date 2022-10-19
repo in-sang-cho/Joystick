@@ -6,8 +6,12 @@ public class FrustumLine : MonoBehaviour
 {
     private Camera mainCamera;
 
-    private Vector3[] CameraFrustum = new Vector3[4];
+    [SerializeField] private Vector3[] CameraFrustum = new Vector3[4];
     [SerializeField] private List<MeshRenderer> RendererList = new List<MeshRenderer>();
+    [SerializeField] private List<GameObject> CullingList = new List<GameObject>();
+
+    [SerializeField] private LayerMask mask;
+    [SerializeField] private float Distance;
 
     //private 
 
@@ -21,6 +25,8 @@ public class FrustumLine : MonoBehaviour
         Y = 0.45f;
         CX = 0.1f;
         CY = 0.1f;
+
+        Distance = 13.0f;
 
         for (int i = 0; i < CameraFrustum.Length; ++i)
             CameraFrustum[i] = new Vector3(0.0f, 0.0f, 0.0f);
@@ -41,34 +47,60 @@ public class FrustumLine : MonoBehaviour
             CameraFrustum[i].Normalize();
          */
 
+        CullingList.Clear();
+
         for (int i = 0; i < CameraFrustum.Length; ++i)
         {
             var worldSpaceCorner = mainCamera.transform.TransformVector(CameraFrustum[i]);
             Debug.DrawLine(mainCamera.transform.localPosition, worldSpaceCorner, Color.black);
+
+            Ray ray = new Ray(mainCamera.transform.position, worldSpaceCorner);
+
+            RaycastHit[] hits = Physics.RaycastAll(ray, Distance, mask);
+
+            foreach (RaycastHit hit in hits)
+                if (!CullingList.Contains(hit.transform.gameObject))
+                    CullingList.Add(hit.transform.gameObject);
         }
 
+        RendererList.Clear();
 
+        foreach (GameObject Element in CullingList)
+            StartCoroutine(FindRenderer(Element));
 
-        // ** Ray
-
-        // **
-
-
-    }
-
-    void FindRenderer(GameObject _Obj)
-    {
-        for (int i = 0; i < _Obj.transform.childCount; ++i)
+        foreach (MeshRenderer Element in RendererList)
         {
-            if (_Obj.transform.childCount > 0)
-                FindRenderer(_Obj.transform.GetChild(i).gameObject);
+            Element.material.shader = Shader.Find("Transparent/VertexLit");
 
-            MeshRenderer renderer = _Obj.transform.GetChild(i).GetComponent<MeshRenderer>();
+            if (Element.material.HasProperty("_Color"))
+            {
+                Color color = Element.material.GetColor("_Color");
 
-            if (renderer != null)
-                RendererList.Add(renderer);
+                StartCoroutine(SetColor(Element, color));
+            }
         }
     }
+
+    IEnumerator FindRenderer(GameObject _Obj)
+    {
+        int i = 0;
+
+         do
+         {
+             if (_Obj.transform.childCount > 0)
+                 FindRenderer(_Obj.transform.GetChild(i).gameObject);
+         
+             // ** 현재 것부터 확인하기 위해(만약에 Child 것을 추가하고 싶으면 transform.GetChild(i) 로 변경할 것)
+             MeshRenderer renderer = _Obj.transform.GetChild(i).GetComponent<MeshRenderer>();
+         
+             if (renderer != null)
+                 RendererList.Add(renderer);
+         }
+         while (i < _Obj.transform.childCount);
+
+        yield return null;
+    }
+
 
     IEnumerator Create()
     {
@@ -80,9 +112,6 @@ public class FrustumLine : MonoBehaviour
                 continue;
 
             RendererList.Clear();
-
-            // ** 게임 오브젝트를 변경
-            //FindRenderer();
 
             foreach (MeshRenderer meshRenderer in RendererList)
             {

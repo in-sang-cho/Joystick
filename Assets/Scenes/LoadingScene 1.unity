@@ -57221,7 +57221,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7adb3f4982cf378439da47c7eac5e2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraFrustum:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   RendererList: []
+  CullingList: []
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  Distance: 0
 --- !u!20 &1252714052
 Camera:
   m_ObjectHideFlags: 0
@@ -57272,7 +57282,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252714049}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 2, y: 19.1, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
