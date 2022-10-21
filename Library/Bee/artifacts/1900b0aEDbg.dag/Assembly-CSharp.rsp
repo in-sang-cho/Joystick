@@ -355,6 +355,8 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
+"Assets/asoliddev - Low Poly Fantasy Warrior/PlayerInput.cs"
+"Assets/asoliddev - Low Poly Fantasy Warrior/PlayerMovement.cs"
 "Assets/Assets/Scripts/FollowCamera.cs"
 "Assets/Assets/Scripts/JoystickController.cs"
 "Assets/Assets/Scripts/LoadingBar.cs"
