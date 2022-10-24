@@ -64,18 +64,21 @@
     <Compile Include="Assets\SpawnPointList.cs" />
     <Compile Include="Assets\View\FieldOfView.cs" />
     <Compile Include="Assets\View\ViewEditor.cs" />
+    <Compile Include="Assets\Village\LowPoly\Medieval\Village\Scripts\ToggleScript.cs" />
     <Compile Include="Assets\Assets\Scripts\PController.cs" />
+    <Compile Include="Assets\Village\LowPoly\Medieval\Village\Scripts\InfiniteRotator.cs" />
     <Compile Include="Assets\FrustumLine.cs" />
     <Compile Include="Assets\Assets\Scripts\JoystickController.cs" />
+    <Compile Include="Assets\Village\LowPoly\Medieval\Village\Scripts\ContainerOpener.cs" />
     <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
     <Compile Include="Assets\MinimapCameraController.cs" />
-    <Compile Include="Assets\asoliddev - Low Poly Fantasy Warrior\PlayerMovement.cs" />
-    <Compile Include="Assets\asoliddev - Low Poly Fantasy Warrior\PlayerInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sample- Low Poly Nature Assets\Documentation.txt" />
+    <None Include="Assets\Village\Materials\Shaders\DiffuseVertexColor.shader" />
     <None Include="Assets\Sample- Low Poly Nature Assets\Materials\_MaterialIndex.txt" />
     <None Include="Assets\Low Poly Nature Assets\Documentation.txt" />
+    <None Include="Assets\Village\LowPoly\Medieval\Misc\Shaders\EmissionShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
