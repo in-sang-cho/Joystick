@@ -56,29 +56,31 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Point.cs" />
-    <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\Demo.cs" />
-    <Compile Include="Assets\ZombiSoft\TinyHealthSystem\HealthSystem.cs" />
+    <Compile Include="Assets\Assets\Scripts\Point.cs" />
+    <Compile Include="Assets\Assets\DownloadedContents\ZombiSoft\TinyHealthSystem\Demo\Demo.cs" />
+    <Compile Include="Assets\Assets\DownloadedContents\ZombiSoft\TinyHealthSystem\HealthSystem.cs" />
     <Compile Include="Assets\Assets\Scripts\LoadingBar.cs" />
     <Compile Include="Assets\Assets\Scripts\FollowCamera.cs" />
-    <Compile Include="Assets\SpawnPointList.cs" />
+    <Compile Include="Assets\Assets\Scripts\SpawnPointList.cs" />
     <Compile Include="Assets\View\FieldOfView.cs" />
     <Compile Include="Assets\View\ViewEditor.cs" />
-    <Compile Include="Assets\Village\LowPoly\Medieval\Village\Scripts\ToggleScript.cs" />
+    <Compile Include="Assets\Assets\DownloadedContents\Village\LowPoly\Medieval\Village\Scripts\ToggleScript.cs" />
     <Compile Include="Assets\Assets\Scripts\PController.cs" />
-    <Compile Include="Assets\Village\LowPoly\Medieval\Village\Scripts\InfiniteRotator.cs" />
-    <Compile Include="Assets\FrustumLine.cs" />
+    <Compile Include="Assets\Assets\DownloadedContents\Village\LowPoly\Medieval\Village\Scripts\InfiniteRotator.cs" />
+    <Compile Include="Assets\Assets\Scripts\FrustumLine.cs" />
     <Compile Include="Assets\Assets\Scripts\JoystickController.cs" />
-    <Compile Include="Assets\Village\LowPoly\Medieval\Village\Scripts\ContainerOpener.cs" />
-    <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
-    <Compile Include="Assets\MinimapCameraController.cs" />
+    <Compile Include="Assets\Assets\DownloadedContents\Village\LowPoly\Medieval\Village\Scripts\ContainerOpener.cs" />
+    <Compile Include="Assets\Assets\DownloadedContents\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
+    <Compile Include="Assets\Assets\Scripts\MinimapCameraController.cs" />
+    <Compile Include="Assets\Assets\Scripts\Weapon.cs" />
+    <Compile Include="Assets\Assets\Scripts\Player.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Sample- Low Poly Nature Assets\Documentation.txt" />
-    <None Include="Assets\Village\Materials\Shaders\DiffuseVertexColor.shader" />
-    <None Include="Assets\Sample- Low Poly Nature Assets\Materials\_MaterialIndex.txt" />
-    <None Include="Assets\Low Poly Nature Assets\Documentation.txt" />
-    <None Include="Assets\Village\LowPoly\Medieval\Misc\Shaders\EmissionShader.shader" />
+    <None Include="Assets\Assets\DownloadedContents\Sample- Low Poly Nature Assets\Documentation.txt" />
+    <None Include="Assets\Assets\DownloadedContents\Village\Materials\Shaders\DiffuseVertexColor.shader" />
+    <None Include="Assets\Assets\DownloadedContents\Sample- Low Poly Nature Assets\Materials\_MaterialIndex.txt" />
+    <None Include="Assets\Assets\DownloadedContents\Low Poly Nature Assets\Documentation.txt" />
+    <None Include="Assets\Assets\DownloadedContents\Village\LowPoly\Medieval\Misc\Shaders\EmissionShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
