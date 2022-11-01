@@ -10,8 +10,10 @@ public class Player : MonoBehaviour
     bool wDown;
     bool jDown;
     bool isJump;
+    bool isRoll;
 
     Vector3 moveVec;
+    Vector3 rollVec;
 
     Rigidbody rigid;
     Animator anim;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
         Move();
         Turn();
         Jump();
+        Roll();
 
     }
 
@@ -44,6 +47,8 @@ public class Player : MonoBehaviour
     void Move()
     {
         moveVec = new Vector3(hAxis, 0, vAxis).normalized;
+        if (isRoll)
+            moveVec = rollVec;
 
         transform.position += moveVec * speed * (wDown ? 0.3f : 1.0f) * Time.deltaTime;
 
@@ -58,17 +63,40 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (jDown && !isJump)
+        if (jDown && moveVec == Vector3.zero && !isJump && !isRoll)
         {
-            rigid.AddForce(Vector3.up * 15, ForceMode.Impulse);
+            rigid.AddForce(Vector3.up * 16, ForceMode.Impulse);
+            anim.SetBool("isJump", true);
+            anim.SetTrigger("doJump");
             isJump = true;
         }
+    }
+
+    void Roll()
+    {
+        if (jDown && moveVec != Vector3.zero && !isJump && !isRoll)
+        {
+            speed *= 2;
+            rollVec = moveVec;
+            anim.SetTrigger("doRoll");
+            isRoll = true;
+
+            Invoke("RollOut", 0.4f);
+        }
+    }
+
+    void RollOut()
+    {
+        speed *= 0.5f;
+        isRoll = false;
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
+            anim.SetBool("isJump", false);
             isJump = false;
         }    
     }
