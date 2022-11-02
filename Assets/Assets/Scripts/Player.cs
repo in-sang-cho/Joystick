@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     Rigidbody rigid;
     Animator anim;
 
+    GameObject nearObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,5 +101,18 @@ public class Player : MonoBehaviour
             anim.SetBool("isJump", false);
             isJump = false;
         }    
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Weapon")
+            nearObject = other.gameObject;
+
+        Debug.Log(nearObject.name);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        
     }
 }

@@ -363,6 +363,7 @@
 "Assets/Assets/DownloadedContents/ZombiSoft/TinyHealthSystem/HealthSystem.cs"
 "Assets/Assets/Scripts/FollowCamera.cs"
 "Assets/Assets/Scripts/FrustumLine.cs"
+"Assets/Assets/Scripts/Item.cs"
 "Assets/Assets/Scripts/JoystickController.cs"
 "Assets/Assets/Scripts/LoadingBar.cs"
 "Assets/Assets/Scripts/MinimapCameraController.cs"

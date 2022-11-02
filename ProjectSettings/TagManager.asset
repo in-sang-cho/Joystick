@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Enemy
   - Melee
+  - Potion
+  - Weapon
   layers:
   - Default
   - TransparentFX
