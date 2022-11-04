@@ -75,6 +75,7 @@
     <Compile Include="Assets\Assets\DownloadedContents\Village\LowPoly\Medieval\Village\Scripts\ContainerOpener.cs" />
     <Compile Include="Assets\Assets\DownloadedContents\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
     <Compile Include="Assets\Assets\Scripts\MinimapCameraController.cs" />
+    <Compile Include="Assets\Assets\Scripts\Orbit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\DownloadedContents\Sample- Low Poly Nature Assets\Documentation.txt" />

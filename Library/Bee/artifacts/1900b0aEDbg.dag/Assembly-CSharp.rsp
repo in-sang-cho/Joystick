@@ -367,6 +367,7 @@
 "Assets/Assets/Scripts/JoystickController.cs"
 "Assets/Assets/Scripts/LoadingBar.cs"
 "Assets/Assets/Scripts/MinimapCameraController.cs"
+"Assets/Assets/Scripts/Orbit.cs"
 "Assets/Assets/Scripts/PController.cs"
 "Assets/Assets/Scripts/Player.cs"
 "Assets/Assets/Scripts/Point.cs"

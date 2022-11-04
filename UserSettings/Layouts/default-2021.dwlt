@@ -69,8 +69,8 @@ MonoBehaviour:
     y: 543
     width: 863
     height: 172
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 89
+  controlID: 22
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,8 +172,8 @@ MonoBehaviour:
     y: 0
     width: 340
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 300}
   m_MaxSize: {x: 32384, y: 24288}
   vertical: 0
-  controlID: 182
+  controlID: 20
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 300}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 1
-  controlID: 88
+  controlID: 21
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -488,14 +488,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.8207998
+    - e00: 0.5414299
       e01: 0
       e02: 0
-      e03: 21.208496
+      e03: 84.12961
       e10: 0
-      e11: 0.8207998
+      e11: 0.5414299
       e12: 0
-      e13: -57.81122
+      e13: 79.111206
       e20: 0
       e21: 0
       e22: 1
@@ -550,7 +550,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 30556
+  m_LastSelectedObjectID: -15330
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -592,22 +592,22 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Low-Poly Weapons/Models
+    - Assets/Oriental_Sword/Animation/Humanoid
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Low-Poly Weapons/Models
+  - Assets/Oriental_Sword/Animation/Humanoid
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\SGA\Documents\GitHub\Joystick
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 221}
-    m_SelectedIDs: de810000
-    m_LastClickedID: 33246
-    m_ExpandedIDs: 00000000c8810000ca810000cc810000ce810000d0810000d2810000d4810000d6810000d8810000da810000dc810000de810000e081000000ca9a3b
+    scrollPos: {x: 0, y: 313}
+    m_SelectedIDs: ce820000
+    m_LastClickedID: 33486
+    m_ExpandedIDs: 00000000588200005a8200005c8200005e82000060820000628200006482000066820000688200006a8200006c8200006e820000708200009c820000ce82000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -635,7 +635,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c8810000ca810000cc810000ce810000d0810000d2810000d4810000d6810000d8810000da810000dc810000de810000e0810000
+    m_ExpandedIDs: 00000000588200005a8200005c8200005e82000060820000628200006482000066820000688200006a8200006c8200006e82000070820000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -679,7 +679,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 9}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -763,23 +763,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fc810000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 1c32ffff8c43ffffae4affff5a92ffffee9cffff32fbffff86770000e0770000
+      m_SelectedIDs: 1ec4ffff
+      m_LastClickedID: -15330
+      m_ExpandedIDs: 32fbffff1a5b00007461000090620000fe690000026b0000e27300002877000048770000587700006477000068770000e6770000ec770000ee770000f0770000f277000092780000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Low Poly Warrior
-        m_OriginalName: Low Poly Warrior
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 30556
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 4
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 2}
       m_SearchString: 
@@ -1014,9 +1014,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -27.944166, y: -7.474431, z: -79.37978}
+    m_Target: {x: -86.6054, y: 4.2094626, z: -81.600266}
     speed: 2
-    m_Value: {x: -27.944166, y: -7.474431, z: -79.37978}
+    m_Value: {x: -86.6054, y: 4.2094626, z: -81.600266}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1063,13 +1063,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.16736616, y: -0.68418366, z: 0.15286814, w: -0.6944682}
+    m_Target: {x: -0.24170516, y: 0.5901639, z: -0.20161065, w: -0.74464846}
     speed: 2
-    m_Value: {x: -0.16721795, y: -0.6835778, z: 0.15273276, w: -0.6938532}
+    m_Value: {x: -0.24148034, y: 0.5896149, z: -0.20142312, w: -0.7439558}
   m_Size:
-    m_Target: 10
+    m_Target: 0.75202096
     speed: 2
-    m_Value: 10
+    m_Value: 0.75202096
   m_Ortho:
     m_Target: 0
     speed: 2

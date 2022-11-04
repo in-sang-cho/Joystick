@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float speed;
     public GameObject[] weapons;
     public bool[] hasWeapons;
+    public GameObject[] berserker;
+    public int hasBerserker;
 
     public int health;
     public int stamina;
@@ -23,10 +25,12 @@ public class Player : MonoBehaviour
     bool jDown;
     bool iDown;
     bool sDown;
+    bool aDown;
 
     bool isJump;
     bool isRoll;
     bool isSwap;
+    bool isAtkReady;
 
     Vector3 moveVec;
     Vector3 rollVec;
@@ -35,8 +39,9 @@ public class Player : MonoBehaviour
     Animator anim;
 
     GameObject nearObject;
-    GameObject equipWeapon;
+    Weapon equipWeapon;
     int equipWeaponIndex = -1;
+    float atkDelay;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +57,7 @@ public class Player : MonoBehaviour
         Move();
         Turn();
         Jump();
+        Attack();
         Roll();
         Interation();
         Swap();
@@ -65,6 +71,7 @@ public class Player : MonoBehaviour
         jDown = Input.GetButton("Jump");
         iDown = Input.GetButton("Interation");
         sDown = Input.GetButton("Switch1");
+        aDown = Input.GetButton("Fire1");
     }
 
     void Move()
@@ -72,10 +79,10 @@ public class Player : MonoBehaviour
         moveVec = new Vector3(hAxis, 0, vAxis).normalized;
         if (isRoll)
             moveVec = rollVec;
-        if (isSwap)
+        if (isSwap || ((!isAtkReady && equipWeapon != null ) && !isJump))
             moveVec = Vector3.zero;
 
-        transform.position += moveVec * speed * (wDown ? 0.3f : 1.0f) * Time.deltaTime;
+        transform.position += moveVec * speed * (wDown ? 0.1f : 0.2f) * Time.deltaTime;
 
         anim.SetBool("isRun", moveVec != Vector3.zero);
         anim.SetBool("isWalk", wDown);
@@ -94,6 +101,22 @@ public class Player : MonoBehaviour
             anim.SetBool("isJump", true);
             anim.SetTrigger("doJump");
             isJump = true;
+        }
+    }
+
+    void Attack()
+    {
+        if (equipWeapon == null)
+            return;
+
+        atkDelay += Time.deltaTime;
+        isAtkReady = equipWeapon.rate < atkDelay;
+
+        if (aDown && isAtkReady && !isRoll && !isSwap)
+        {
+            equipWeapon.Use();
+            anim.SetTrigger("doAttack");
+            atkDelay = 0;
         }
     }
 
@@ -143,11 +166,11 @@ public class Player : MonoBehaviour
         if (sDown && !isJump && !isRoll)
         {
             if (equipWeapon != null)
-                equipWeapon.SetActive(false);
+                equipWeapon.gameObject.SetActive(false);
 
             equipWeaponIndex = weaponIndex;
-            equipWeapon = weapons[weaponIndex];
-            equipWeapon.SetActive(true);
+            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+            equipWeapon.gameObject.SetActive(true);
 
             anim.SetTrigger("doSwap");
 
@@ -189,6 +212,7 @@ public class Player : MonoBehaviour
                         stamina = maxStamina;
                     break;
                 case Item.Type.Berserk:
+                    berserker[hasBerserker].SetActive(true);
                     berserk += potion.value;
                     if (berserk > maxBerserk)
                         berserk = maxBerserk;

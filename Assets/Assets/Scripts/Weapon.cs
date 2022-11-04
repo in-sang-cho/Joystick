@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     public float rate;
 
     // ** 공격 범위
-    public MeshCollider meleeArea;
+    public BoxCollider meleeArea;
 
     // ** 효과 변수
     public TrailRenderer trailEffect;
