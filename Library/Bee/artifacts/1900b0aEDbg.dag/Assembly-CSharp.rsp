@@ -361,6 +361,7 @@
 "Assets/Assets/DownloadedContents/ZombiSoft/TinyHealthSystem/Demo/Demo.cs"
 "Assets/Assets/DownloadedContents/ZombiSoft/TinyHealthSystem/Demo/PopupText.cs"
 "Assets/Assets/DownloadedContents/ZombiSoft/TinyHealthSystem/HealthSystem.cs"
+"Assets/Assets/Scripts/Enemy.cs"
 "Assets/Assets/Scripts/FollowCamera.cs"
 "Assets/Assets/Scripts/FrustumLine.cs"
 "Assets/Assets/Scripts/Item.cs"

@@ -60,6 +60,7 @@
     <Compile Include="Assets\Assets\Scripts\Point.cs" />
     <Compile Include="Assets\Assets\DownloadedContents\ZombiSoft\TinyHealthSystem\Demo\Demo.cs" />
     <Compile Include="Assets\Assets\DownloadedContents\ZombiSoft\TinyHealthSystem\HealthSystem.cs" />
+    <Compile Include="Assets\Assets\Scripts\Orbit.cs" />
     <Compile Include="Assets\Assets\Scripts\LoadingBar.cs" />
     <Compile Include="Assets\Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Assets\Scripts\FollowCamera.cs" />
@@ -75,7 +76,7 @@
     <Compile Include="Assets\Assets\DownloadedContents\Village\LowPoly\Medieval\Village\Scripts\ContainerOpener.cs" />
     <Compile Include="Assets\Assets\DownloadedContents\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
     <Compile Include="Assets\Assets\Scripts\MinimapCameraController.cs" />
-    <Compile Include="Assets\Assets\Scripts\Orbit.cs" />
+    <Compile Include="Assets\Assets\Scripts\Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\DownloadedContents\Sample- Low Poly Nature Assets\Documentation.txt" />

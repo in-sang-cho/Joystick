@@ -106,8 +106,8 @@ GameObject:
   - component: {fileID: 6908491293698294021}
   - component: {fileID: 6908491293698294020}
   - component: {fileID: 6908491293698294043}
-  - component: {fileID: 6908491293698294042}
   - component: {fileID: 6908491293698294041}
+  - component: {fileID: 6908491293698294042}
   - component: {fileID: 6908491293698294040}
   m_Layer: 0
   m_Name: Sword
@@ -199,6 +199,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
+--- !u!135 &6908491293698294041
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6908491293698294046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75976884
+  m_Center: {x: -0.10519691, y: -3.5343318e-16, z: -0.039958205}
 --- !u!135 &6908491293698294042
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -212,19 +225,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.8680294
   m_Center: {x: -0.10519743, y: -6.1346768e-15, z: 2.068303}
---- !u!135 &6908491293698294041
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6908491293698294046}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.8473524
-  m_Center: {x: -0.10519691, y: -4.3341945e-16, z: 0.047625605}
 --- !u!114 &6908491293698294040
 MonoBehaviour:
   m_ObjectHideFlags: 0

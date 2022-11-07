@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     bool isRoll;
     bool isSwap;
     bool isAtkReady;
+    bool isBorder;
 
     Vector3 moveVec;
     Vector3 rollVec;
@@ -79,10 +80,11 @@ public class Player : MonoBehaviour
         moveVec = new Vector3(hAxis, 0, vAxis).normalized;
         if (isRoll)
             moveVec = rollVec;
-        if (isSwap || ((!isAtkReady && equipWeapon != null ) && !isJump))
+        if (isSwap || ((!isAtkReady && equipWeapon != null ) && !isJump) || isBorder)
             moveVec = Vector3.zero;
 
-        transform.position += moveVec * speed * (wDown ? 0.1f : 0.2f) * Time.deltaTime;
+        if (!isBorder)
+            transform.position += moveVec * speed * (wDown ? 0.1f : 0.2f) * Time.deltaTime;
 
         anim.SetBool("isRun", moveVec != Vector3.zero);
         anim.SetBool("isWalk", wDown);
@@ -183,6 +185,23 @@ public class Player : MonoBehaviour
     void SwapOut()
     {
         isSwap = false;
+    }
+
+    void FreezeRotation()
+    {
+        rigid.angularVelocity = Vector3.zero;
+    }
+
+    void StopToWall()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+        isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
+    }
+
+    void FixedUpdate()
+    {
+        FreezeRotation();
+        StopToWall();
     }
 
     private void OnCollisionEnter(Collision collision)
