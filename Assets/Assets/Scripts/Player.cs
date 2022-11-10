@@ -239,6 +239,10 @@ public class Player : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
+        else if (other.tag == "EnemyBullet")
+        {
+            
+        }
     }
 
     void OnTriggerStay(Collider other)
