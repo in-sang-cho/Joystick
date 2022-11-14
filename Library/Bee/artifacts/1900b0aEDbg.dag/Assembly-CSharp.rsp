@@ -363,6 +363,7 @@
 "Assets/Assets/DownloadedContents/ZombiSoft/TinyHealthSystem/HealthSystem.cs"
 "Assets/Assets/Scripts/Bullet.cs"
 "Assets/Assets/Scripts/Enemy.cs"
+"Assets/Assets/Scripts/Follow.cs"
 "Assets/Assets/Scripts/FollowCamera.cs"
 "Assets/Assets/Scripts/FrustumLine.cs"
 "Assets/Assets/Scripts/Item.cs"

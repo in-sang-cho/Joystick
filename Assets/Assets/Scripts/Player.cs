@@ -4,19 +4,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
-    public GameObject[] weapons;
-    public bool[] hasWeapons;
-    public GameObject[] berserker;
-    public int hasBerserker;
+    [SerializeField]
+    private Transform characterBody;
+    [SerializeField]
+    private Transform cameraArm;
 
-    public int health;
-    public int stamina;
-    public int berserk;
+    [SerializeField] 
+    private float speed;
+    [SerializeField] 
+    private float rotate;
+    [SerializeField] 
+    private GameObject[] weapons;
+    [SerializeField] 
+    private bool[] hasWeapons;
+    [SerializeField] 
+    private GameObject[] berserker;
+    [SerializeField] 
+    private int hasBerserker;
 
-    public int maxHealth;
-    public int maxStamina;
-    public int maxBerserk;
+    [SerializeField] 
+    private int health;
+    [SerializeField] 
+    private int stamina;
+    [SerializeField] 
+    private int berserk;
+
+    [SerializeField] 
+    private int maxHealth;
+    [SerializeField] 
+    private int maxStamina;
+    [SerializeField] 
+    private int maxBerserk;
 
     float hAxis;
     float vAxis;
@@ -27,6 +45,7 @@ public class Player : MonoBehaviour
     bool sDown;
     bool aDown;
 
+    bool isMove;
     bool isJump;
     bool isRoll;
     bool isSwap;
@@ -54,14 +73,30 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        LookAround();
         GetInput();
         Move();
-        Turn();
         Jump();
         Attack();
         Roll();
         Interation();
         Swap();
+    }
+
+    void LookAround()
+    {
+        Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        Vector3 camAngle = cameraArm.rotation.eulerAngles;
+
+        float x = camAngle.x - mouseDelta.y;
+
+        if (x < 180.0f)
+            x = Mathf.Clamp(x, -1f, 70f);
+        else
+            x = Mathf.Clamp(x, 335f, 361f);
+
+        cameraArm.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
+        cameraArm.position = characterBody.position;
     }
 
     void GetInput()
@@ -77,22 +112,29 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        moveVec = new Vector3(hAxis, 0, vAxis).normalized;
+        Vector2 moveInput = new Vector2(hAxis, vAxis);
+        isMove = moveInput.magnitude != 0;
+        anim.SetBool("isRun", isMove);
+        
+        //anim.SetBool("isRun", moveVec != Vector3.zero);
+        if (isMove)
+        {
+            Vector3 lookForward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
+            Vector3 lookRight = new Vector3(cameraArm.right.x, 0f, cameraArm.right.z).normalized;
+            Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
+
+            characterBody.forward = lookForward;
+            transform.position += moveDir * Time.deltaTime * speed;
+        }
+
         if (isRoll)
             moveVec = rollVec;
         if (isSwap || ((!isAtkReady && equipWeapon != null ) && !isJump) || isBorder)
             moveVec = Vector3.zero;
 
+
         if (!isBorder)
             transform.position += moveVec * speed * (wDown ? 0.1f : 0.2f) * Time.deltaTime;
-
-        anim.SetBool("isRun", moveVec != Vector3.zero);
-        anim.SetBool("isWalk", wDown);
-    }
-
-    void Turn()
-    {
-        transform.LookAt(transform.position + moveVec);
     }
 
     void Jump()
