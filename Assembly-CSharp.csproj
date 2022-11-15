@@ -69,6 +69,7 @@
     <Compile Include="Assets\Blaze AI\Scripts\Additive Scripts\BlazeAICoverManager.cs" />
     <Compile Include="Assets\Blaze AI\Demos\Scripts\ChangeState.cs" />
     <Compile Include="Assets\Blaze AI\Scripts\Behaviours\AlertTagBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Follow.cs" />
     <Compile Include="Assets\Blaze AI\Demos\Scripts\DropCube.cs" />
     <Compile Include="Assets\Blaze AI\Demos\Scripts\MoveCharacter.cs" />
     <Compile Include="Assets\Blaze AI\Demos\Scripts\Health.cs" />
@@ -109,7 +110,6 @@
     <Compile Include="Assets\Blaze AI\Demos\Scripts\TurnInvisible.cs" />
     <Compile Include="Assets\Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Blaze AI\Demos\Scripts\HealthUI.cs" />
-    <Compile Include="Assets\Assets\Scripts\Follow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Polygonmaker\Polygonmaker Animations\Creatures\FBX 2013\Anim_Creature@taunt2.FBX.txt" />

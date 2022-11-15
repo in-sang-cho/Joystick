@@ -11,6 +11,7 @@ TagManager:
   - Melee
   - Potion
   - Weapon
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Ground
   - Enemy
   - EnemyDead
-  - 
+  - EnemyBullet
   - 
   - 
   - 

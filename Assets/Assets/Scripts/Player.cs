@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private Transform characterBody;
-    [SerializeField]
-    private Transform cameraArm;
-
     [SerializeField] 
     private float speed;
     [SerializeField] 
@@ -45,18 +40,19 @@ public class Player : MonoBehaviour
     bool sDown;
     bool aDown;
 
-    bool isMove;
     bool isJump;
     bool isRoll;
     bool isSwap;
     bool isAtkReady;
     bool isBorder;
+    bool isDamage;
 
     Vector3 moveVec;
     Vector3 rollVec;
 
     Rigidbody rigid;
     Animator anim;
+    MeshRenderer[] meshs;
 
     GameObject nearObject;
     Weapon equipWeapon;
@@ -68,12 +64,12 @@ public class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        meshs = GetComponentsInChildren<MeshRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        LookAround();
         GetInput();
         Move();
         Jump();
@@ -81,22 +77,7 @@ public class Player : MonoBehaviour
         Roll();
         Interation();
         Swap();
-    }
-
-    void LookAround()
-    {
-        Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        Vector3 camAngle = cameraArm.rotation.eulerAngles;
-
-        float x = camAngle.x - mouseDelta.y;
-
-        if (x < 180.0f)
-            x = Mathf.Clamp(x, -1f, 70f);
-        else
-            x = Mathf.Clamp(x, 335f, 361f);
-
-        cameraArm.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
-        cameraArm.position = characterBody.position;
+        OnDamage();
     }
 
     void GetInput()
@@ -112,29 +93,20 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        Vector2 moveInput = new Vector2(hAxis, vAxis);
-        isMove = moveInput.magnitude != 0;
-        anim.SetBool("isRun", isMove);
-        
-        //anim.SetBool("isRun", moveVec != Vector3.zero);
-        if (isMove)
-        {
-            Vector3 lookForward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
-            Vector3 lookRight = new Vector3(cameraArm.right.x, 0f, cameraArm.right.z).normalized;
-            Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
+        moveVec = new Vector3(hAxis, 0, vAxis).normalized;
 
-            characterBody.forward = lookForward;
-            transform.position += moveDir * Time.deltaTime * speed;
-        }
+        if (!isBorder)
+            transform.position += moveVec * speed * (wDown ? 0.1f : 0.2f) * Time.deltaTime;
+
+        transform.LookAt(transform.position + moveVec);
+
+        anim.SetBool("isRun", moveVec != Vector3.zero);
+        anim.SetBool("isWalk", wDown);
 
         if (isRoll)
             moveVec = rollVec;
         if (isSwap || ((!isAtkReady && equipWeapon != null ) && !isJump) || isBorder)
             moveVec = Vector3.zero;
-
-
-        if (!isBorder)
-            transform.position += moveVec * speed * (wDown ? 0.1f : 0.2f) * Time.deltaTime;
     }
 
     void Jump()
@@ -283,8 +255,24 @@ public class Player : MonoBehaviour
         }
         else if (other.tag == "EnemyBullet")
         {
-            
+            Bullet enemyBullet = other.GetComponent<Bullet>();
+            health -= enemyBullet.damage;
+            StartCoroutine(OnDamage());
         }
+    }
+
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        foreach (MeshRenderer mesh in meshs)
+            mesh.material.color = Color.yellow;
+        anim.SetTrigger("doDamage");
+
+        yield return new WaitForSeconds(1);
+
+        isDamage = false;
+        foreach (MeshRenderer mesh in meshs)
+            mesh.material.color = Color.white;
     }
 
     void OnTriggerStay(Collider other)
